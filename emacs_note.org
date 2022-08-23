@@ -1,0 +1,205 @@
+* Basic Key
+** Prefix key
+
+C- Control
+M- Meta
+S- Shift
+
+* Key
+
+C-d: delete-char
+C-x C-f: find-file
+M-x: execute extended command
+C-x 1: hide the other buffer
+C-x 0: hide the current buffer
+
+
+** Universal Arguments
+
+C-u Digit argument 4
+C-u C-u Digit argument 16
+C-u C-u .. Digit argument 4^n
+M-0 to M-9 Digit argument 0 to 9
+C-0 to C-9 Digit argument 0 to 9
+C-M-0 to C-M-9 Digit argument 0 to 9
+C-- Negative argument
+M-- Negative argument
+C-M-- Negative argument
+
+
+M-- M-d kill the previous word before point.
+
+C-x 8 C-h display special character list 
+
+
+M-x eval-buffer  evaluate the entire buffer
+M-x eval-region  evaluate the region that you have marked
+
+** Help key
+C-h m: display the documentation for the major mode
+C-h f: describes a funtion
+C-h v: describes a variable
+C-h k: describes a key
+
+* The Theory of Movement
+
+** The Basics
+C-x C-f: Find (Open) a file
+C-x C-s: Save the buffer
+C-x C-w: Write to a new file
+C-x s: save all files
+C-x b: Switch buffer
+C-x C-b: List all buffers
+C-x k: Kill a buffer
+C-x C-b: Display all open buffers
+C-x C-c: Exits Emacs
+ESC ESC ESC: Exits out of prompts, regions, prefix arguments and returns to just one window
+C-/: Undo Changes
+C-x u: Undo Tree
+F-10: Activates the menu bar
+C-h C <RET> List coding system in use for the current buffer.
+
+
+** Window Management
+
+C-x 0: Deletes the active window
+C-x 1: Deletes other windows
+C-x 2: Split window below
+C-x 3: Split window right
+C-x o: Switch active window
+
+C-x 4 C-f: Finds a file in the other window
+C-x 4 d: Opens M-x dired in the other window
+C-x 4 C-o: Displays a buffer in the other window
+C-x 4 b: Switches the buffer in the other window and makes it the active window
+C-x 4 0: Kills the buffer and window
+
+** Frame Management
+
+C-x 5 2: Create a new frame
+C-x 5 b: Switch buffer in other frame
+C-x 5 0: Delete active frame
+C-x 5 1: Delete other frames
+C-x 5 C-f: Finds a file in the other window
+C-x 5 d: Opens M-x dired in the other window
+C-x 5 C-o: Displays a buffer in ther other window
+
+** Elemental Movement
+
+C-f: Move forward by character
+C-b: Move backward by character
+C-p: Move to previous line
+C-n: Move to next line
+C-j: Create new line
+C-a: Move point to the beginning of the line
+C-e: Move point to the end of the line
+M-m: Move pont to the first non-whitespace character on this line
+M-f: Move forward by word
+M-b: Move backward by word
+
+*** Sub- and Superword Movement
+
+M-x subword-mode: Minor mode that treats CamelCase as distinct words
+M-x superword-mode: Minor mode that treats snake_case as one word
+
+** Moving by S-Expressions
+
+Balenced expressions include:
+  Strings " or '
+  Brackets [], (), {}, <>
+
+C-M-f: Move forward by s-expression
+C-M-b: Move backward by s-expression
+C-M-d: Move down into a list
+C-M-u: Move up out of a list
+C-M-n: Move forward to the next list
+C-M-p: Move backward to the previous list
+
+** Other Movement Commands
+M-}: Move forward to end of paragraph
+M-{: Move backward to start of paragrah
+M-a: Move to beginning of sentence
+M-e: Move to end of sentence
+C-M-a: Move to beginning of defun
+C-M-e: Move to end of defun
+C-x ]: Move forward one page
+C-x [: Move backward one page
+
+** Scrolling
+C-v: Scroll down one page
+M-v: Scroll up one page
+C-M-v: Scroll down the other window
+C-M-S-v: Scroll up the other window
+
+C-x <: Scroll left
+C-x >: Scroll right
+ 
+M-<: Move to the beginning of the buffer
+M->: Move to the end of the buffer
+
+** Bookmarks and Registers
+
+Bookmark is permanent, register is transient
+
+C-x r m: Set a bookmark
+C-x r l: List bookmark
+C-x r b: Jump to bookmark
+C-x r n: Store number in register
+C-x r s: Store region in register
+C-x r SPC: Store point in register
+C-x r +: Increment number in register
+C-x r j: Jump to register
+C-x r w: Store window configuration in register
+C-x r f: Store frameset in register
+** Selections and Regions
+C-<SPC>: Sets the mark, and toggles the region
+C-u C-<SPC>: Jumps to the mark, and repeated calls go further back the marking
+S+<left>,... Shift selection similar to other editors
+C-x C-x Exchanges the point and mark, and reactivates your last region
+M-h: Marks the next paragraph
+C-x h: Marks the whole buffer
+C-M-h: Marks the next defun
+C-x C-p: Marks the next page
+M-@: Marks the next word
+C-M-<SPC> and C-M-@: Marks the next s-expression
+C-<SPC>, C-g: Deactivates the region
+
+** Searching and Indexing
+*** Isearch
+C-s: Begins an incremental search
+c-r: begins a backward incremental search
+c-m-s: begins a regexp incremental search
+c-m-r: Begins a regexp backward incremental search
+RET: Pick the selected match
+C-g: Exit Isearch
+M-n: Move to next item in search history
+M-p: Move to previous item in search history
+C-M-i: "TAB"-complete search string against previous search ring
+C-s C-s: Begins Isearch against last search string
+C-r C-r: Begins backward Isearch against last search string
+C-w: Add word at point to search string
+C-M-y: Add character at point to search string
+M-s C-e: Add rest of line at point to search string
+C-y: Paste from clipboard to search string
+M-s w: Isearch forward for word
+M-s _: Isearch forward for symbol
+M-s .: Isearch forward for symbol at point
+
+*** Occur mode
+M-s o: Occur mode
+M-n, M-p: Go to next and previous occurrence
+<,>: Go to beginning and end of buffer
+g: Revert the buffer, refreshing the search results
+q: quits occur mode
+e: Switches to occur edit mode
+C-c C-c: Exits occur edit mode and applies changes
+
+** Other Movement Commands
+M-r: Repositions the point to the top left, middle left, or bottom left
+C-l: Recenters the point to the middle, top, or bottom in the buffer
+C-M-l: Repositions the comment or definition so it is in view in the buffer
+C-x C-n: Sets the goal column, the horizontal position for point
+C-u C-x C-n: Resets the goal column, the horizontal position for the point
+M-g M-g: Go to line
+M-g TAB: Go to column
+M-g c: Go to character position
